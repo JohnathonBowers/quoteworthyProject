@@ -19,6 +19,12 @@ module.exports = {
             .then(oneQuotation => res.json(oneQuotation))
             .catch(err => res.status(400).json(err))
     },
+    // Update one quotation
+    updateOneQuotation: (req, res) => {
+        Quotation.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+            .then(updatedQuotation => res.json(updatedQuotation))
+            .catch(err => res.status(400).json(err))
+    },
     // Delete one quotation
     deleteOneQuotation: (req, res) => {
         Quotation.findByIdAndDelete(req.params.id)
