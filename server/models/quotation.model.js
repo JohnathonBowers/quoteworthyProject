@@ -32,7 +32,7 @@ const QuotationSchema = new mongoose.Schema({
         maxlength: [30, "Publisher location must not be longer than 30 characters."]
     },
     yearPublished: {
-        type: String,
+        type: Number,
         required: [true, "Year of publication is required."],
         min: [1, "Year must be 1 or higher."],
         max: [2050, "Year must be 2050 or below."]
