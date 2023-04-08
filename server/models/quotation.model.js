@@ -46,12 +46,6 @@ const QuotationSchema = new mongoose.Schema({
     endPage: {
         type: Number,
         required: [true, "End page is required."],
-        validate: {
-            validator: function endPageValidator(value) {
-                return value >= this.startPage;
-            },
-            message: "End page must be greater than or equal to start page."
-        },
         min: [1, "End page must be 1 or higher."],
         max: [10000, "End page must not be greater than 10,000."]
     },
