@@ -59,11 +59,11 @@ const QuotationSchema = new mongoose.Schema({
         type: String,
         required: [true, "Quotation is required."],
         minlength: [2, "Quotation must be at least two characters long."],
-        maxlength: [1000, "Quotation must not be longer than 1,000 characters."]
+        maxlength: [2000, "Quotation must not be longer than 1,000 characters."]
     },
     comments: {
         type: String,
-        maxlength: [1000, "Comments must not be longer than 1,000 characters."]
+        maxlength: [2000, "Comments must not be longer than 1,000 characters."]
     }
 }, { timestamps: true });
 
