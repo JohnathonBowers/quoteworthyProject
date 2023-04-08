@@ -13,6 +13,12 @@ module.exports = {
         .then(allQuotations => res.json(allQuotations))
         .catch(err => res.status(400).json(err))
     },
+    // Find one quotation
+    findOneQuotation: (req, res) => {
+        Quotation.findById(req.params.id)
+            .then(oneQuotation => res.json(oneQuotation))
+            .catch(err => res.status(400).json(err))
+    },
     // Delete one quotation
     deleteOneQuotation: (req, res) => {
         Quotation.findByIdAndDelete(req.params.id)
