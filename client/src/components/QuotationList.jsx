@@ -36,10 +36,13 @@ const QuotationList = () => {
                                             <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage} - {quotation.endPage}</p>
                                         }
                                     </div>
-                                    <div className="d-flex flex-column justify-content-evenly align-items-center col-sm-2">
-                                        <p>Details</p>
-                                        <p>Edit</p>
-                                        <p>Delete</p>
+                                    <div className="col-sm-2 dropdown">
+                                        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
+                                        <ul className="dropdown-menu">
+                                            <li><Link to="#" className="dropdown-item">Details</Link></li>
+                                            <li><Link to="#" className="dropdown-item">Edit</Link></li>
+                                            <li><Link to="#" className="dropdown-item">Delete</Link></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
