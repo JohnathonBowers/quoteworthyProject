@@ -25,7 +25,7 @@ const QuotationEdit = () => {
     })
 
     const updateQuotation = quotationParam => {
-        axios.put("http://localhost:8000/api/quotations/" + id)
+        axios.put("http://localhost:8000/api/quotations/" + id, quotationParam)
             .then(res => {
                 console.log(res.data)
                 navigate("/quotations/" + id)
