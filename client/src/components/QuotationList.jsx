@@ -16,7 +16,7 @@ const QuotationList = () => {
         <div className="container mt-4 col-sm-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
-                <Link to="/add">Add Quotation</Link>
+                <Link to="/quotations/add">Add Quotation</Link>
             </div>
             <div className="d-flex flex-row justify-content-center">
                 <h2 className="my-4">Your Collection</h2>
@@ -25,7 +25,7 @@ const QuotationList = () => {
                 {
                     quotations.map((quotation, index) => {
                         return (
-                            <div key={index}>
+                            <div key={index} className="shadow-sm p-4 mb-6 rounded">
                                 <p className="mb-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
                                 <div className="row">
                                     <div className="col-sm-10">
