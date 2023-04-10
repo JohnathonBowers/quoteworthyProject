@@ -25,7 +25,7 @@ const QuotationList = () => {
                 {
                     quotations.map((quotation, index) => {
                         return (
-                            <div key={index} className="shadow-sm p-4 mb-6 rounded">
+                            <div key={index} className="mb-4 shadow p-4 mb-6 rounded">
                                 <p className="mb-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
                                 <div className="row">
                                     <div className="col-sm-10">
@@ -39,7 +39,7 @@ const QuotationList = () => {
                                     <div className="col-sm-2 dropdown">
                                         <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
                                         <ul className="dropdown-menu">
-                                            <li><Link to="#" className="dropdown-item">Details</Link></li>
+                                            <li><Link to={`/quotations/${quotation._id}`} className="dropdown-item">Details</Link></li>
                                             <li><Link to="#" className="dropdown-item">Edit</Link></li>
                                             <li><Link to="#" className="dropdown-item">Delete</Link></li>
                                         </ul>
