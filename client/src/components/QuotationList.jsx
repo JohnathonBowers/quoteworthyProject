@@ -12,6 +12,16 @@ const QuotationList = () => {
             .catch(err => console.log(err))
     }, [])
     
+    const removeFromDom = quotationId => {
+        setQuotations(quotations.filter(quotation => quotation._id !== quotationId))
+    }
+
+    const deleteQuotation = quotationId => {
+        axios.delete("http://localhost:8000/api/quotations/" + quotationId)
+            .then(res => {removeFromDom(quotationId)})
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="container mt-4 col-sm-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
@@ -41,7 +51,7 @@ const QuotationList = () => {
                                         <ul className="dropdown-menu">
                                             <li><Link to={`/quotations/${quotation._id}`} className="dropdown-item">Details</Link></li>
                                             <li><Link to="#" className="dropdown-item">Edit</Link></li>
-                                            <li><Link to="#" className="dropdown-item">Delete</Link></li>
+                                            <li><Link to="#" onClick={e => deleteQuotation(quotation._id)} className="dropdown-item">Delete</Link></li>
                                         </ul>
                                     </div>
                                 </div>
