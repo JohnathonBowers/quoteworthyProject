@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import QuotationForm from './QuotationForm'
 
 const QuotationCreate = () => {
     
@@ -18,7 +20,17 @@ const QuotationCreate = () => {
 
     const [errors, setErrors] = useState()
     
-    
+    const navigate = useNavigate()
+
+    const createQuotation = quotationParam => {
+        axios.post("http://localhost:8000/api/quotations", quotationParam)
+            .then(res => {
+                navigate(`/quotations/${res.data._id}`)
+            })
+            .catch(err => {
+                setErrors(err.response.data.errors)
+            })
+    }
 
     return (
         <div className="container mt-4 col-sm-8">
@@ -29,6 +41,7 @@ const QuotationCreate = () => {
             <div className="d-flex flex-row justify-content-center">
                 <h2 className="my-4">Add a Quotation</h2>
             </div>
+            <QuotationForm initialQuotationData={initialQuotationData} onSubmitProp={createQuotation} errors={errors} />
         </div>
     )
 }
