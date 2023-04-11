@@ -22,7 +22,7 @@ const QuotationEdit = () => {
                 setLoaded(true)
             })
             .catch(err => console.log(err))
-    })
+    }, [id])
 
     const updateQuotation = quotationParam => {
         axios.put("http://localhost:8000/api/quotations/" + id, quotationParam)
