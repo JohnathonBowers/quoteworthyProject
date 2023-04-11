@@ -43,7 +43,7 @@ const QuotationList = () => {
                                         {
                                             quotation.endPage === quotation.startPage ?
                                             <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage}</p> :
-                                            <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage} - {quotation.endPage}</p>
+                                            <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage}-{quotation.endPage}</p>
                                         }
                                     </div>
                                     <div className="col-sm-2 dropdown">

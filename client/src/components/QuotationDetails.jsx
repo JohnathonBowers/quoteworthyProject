@@ -24,12 +24,12 @@ const QuotationDetails = () => {
                 <div className="d-flex flex-row justify-content-center">
                     <h2 className="my-4">Quotation Details</h2>
                 </div>
-                <h5 className="my-4">"{quotation.quotation}"</h5>
+                <h5 className="my-4">{quotation.quotation}</h5>
                 <p className="mt-4 mb-2"><strong>Citation Information:</strong></p>
                 {
                     quotation.endPage === quotation.startPage ?
                     <p>{quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}</p> :
-                    <p>{quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage} - {quotation.endPage}</p>
+                    <p>{quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}-{quotation.endPage}</p>
                 }
                 <p className="mt-4 mb-2"><strong>Your Comments:</strong></p>
                 <p>{quotation.comments}</p>
