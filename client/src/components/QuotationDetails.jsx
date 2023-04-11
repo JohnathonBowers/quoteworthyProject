@@ -28,8 +28,8 @@ const QuotationDetails = () => {
                 <p className="mt-4 mb-2"><strong>Citation Information:</strong></p>
                 {
                     quotation.endPage === quotation.startPage ?
-                    <p>{quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}</p> :
-                    <p>{quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}-{quotation.endPage}</p>
+                    <p><span>&#8212;</span> {quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}</p> :
+                    <p><span>&#8212;</span> {quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}-{quotation.endPage}</p>
                 }
                 <p className="mt-4 mb-2"><strong>Your Comments:</strong></p>
                 <p>{quotation.comments}</p>
