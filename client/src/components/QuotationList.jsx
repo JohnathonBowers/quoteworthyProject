@@ -39,7 +39,7 @@ const QuotationList = () => {
                                 <p className="mb-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
                                 <div className="row">
                                     <div className="col-sm-10">
-                                        <p className="mb-2">"{quotation.quotation}"</p>
+                                        <p className="mb-2">{quotation.quotation}</p>
                                         {
                                             quotation.endPage === quotation.startPage ?
                                             <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage}</p> :
