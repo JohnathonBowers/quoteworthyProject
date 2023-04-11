@@ -9,7 +9,7 @@ const QuotationEdit = () => {
 
     const [quotation, setQuotation] = useState({})
 
-    const [errors, setErrors] = useState()
+    const [errors, setErrors] = useState([])
 
     const [loaded, setLoaded] = useState(false)
 
@@ -31,7 +31,12 @@ const QuotationEdit = () => {
                 navigate("/quotations/" + id)
             })
             .catch(err => {
-                setErrors(err.response.data.errors)
+                const errorResponse = err.response.data.errors
+                const errorArray = [];
+                for (const key of Object.keys(errorResponse)) {
+                    errorArray.push(errorResponse[key].message)
+                }
+                setErrors(errorArray)
             })
     }
 

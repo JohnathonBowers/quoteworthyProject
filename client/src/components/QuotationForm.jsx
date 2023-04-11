@@ -25,7 +25,12 @@ const QuotationForm = (props) => {
 
     return (
         <div className="container col-sm-10 mt-4">
-            <p className="text-primary mb-4">* Indicates a required field</p>
+            <div className="mb-4">
+            {
+                errors.map((error, index) => <p key={index} className="text-danger">{error}</p>)
+            }
+            </div>
+            <p className="text-primary my-4">* Indicates a required field</p>
             <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                     <div className="col-sm-6">
