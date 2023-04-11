@@ -31,29 +31,27 @@ const QuotationList = () => {
             <div className="d-flex flex-row justify-content-center">
                 <h2 className="my-4">Your Collection</h2>
             </div>
-            <div>
+            <div className="container col-sm-10">
                 {
                     quotations.map((quotation, index) => {
                         return (
-                            <div key={index} className="mb-4 shadow p-4 mb-6 rounded">
-                                <p className="mb-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
-                                <div className="row">
-                                    <div className="col-sm-10">
-                                        <p className="mb-2">{quotation.quotation}</p>
-                                        {
+                            <div key={index} className="row mb-4 gx-4 shadow p-4 mb-6 rounded">
+                                <div className="col-sm-10">
+                                    <p className="my-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
+                                    <p className="my-2">{quotation.quotation}</p>
+                                    {
                                             quotation.endPage === quotation.startPage ?
-                                            <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage}</p> :
-                                            <p className="text-end"><em>{quotation.bookTitle}</em>, {quotation.startPage}-{quotation.endPage}</p>
-                                        }
-                                    </div>
-                                    <div className="col-sm-2 dropdown">
-                                        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
-                                        <ul className="dropdown-menu">
-                                            <li><Link to={`/quotations/${quotation._id}`} className="dropdown-item">Details</Link></li>
-                                            <li><Link to={`/quotations/edit/${quotation._id}`} className="dropdown-item">Edit</Link></li>
-                                            <li><Link to="#" onClick={e => deleteQuotation(quotation._id)} className="dropdown-item">Delete</Link></li>
-                                        </ul>
-                                    </div>
+                                            <p><span>&#8212;</span> <em>{quotation.bookTitle}</em>, {quotation.startPage}</p> :
+                                            <p><span>&#8212;</span> <em>{quotation.bookTitle}</em>, {quotation.startPage}-{quotation.endPage}</p>
+                                    }
+                                </div>
+                                <div className="col-sm-2 dropdown">
+                                    <button className="my-2 btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
+                                    <ul className="dropdown-menu">
+                                        <li><Link to={`/quotations/${quotation._id}`} className="dropdown-item">Details</Link></li>
+                                        <li><Link to={`/quotations/edit/${quotation._id}`} className="dropdown-item">Edit</Link></li>
+                                        <li><Link to="#" onClick={e => deleteQuotation(quotation._id)} className="dropdown-item">Delete</Link></li>
+                                    </ul>
                                 </div>
                             </div>
                         )
