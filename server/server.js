@@ -11,5 +11,6 @@ app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
 
 require('./routes/quotation.routes')(app);
+require('./routes/user.routes');
 
 app.listen( port, () => console.log(`Listening on port: ${port}`) );
