@@ -35,7 +35,7 @@ const QuotationList = () => {
                 {
                     quotations.map((quotation, index) => {
                         return (
-                            <div key={index} className="row mb-4 gx-4 shadow p-4 mb-6 rounded">
+                            <div key={index} className="row mb-4 gx-5 shadow p-4 mb-6 rounded">
                                 <div className="col-sm-10">
                                     <p className="my-2"><strong>{quotation.authorLastName}, {quotation.authorFirstName}</strong></p>
                                     <p className="my-2">{quotation.quotation}</p>
