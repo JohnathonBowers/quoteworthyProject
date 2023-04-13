@@ -39,5 +39,9 @@ module.exports = {
             console.log(err)
             return res.status(400).json(err)
         }
+    },
+    logoutUser: (req, res) => {
+        res.clearCookie("usertoken")
+        res.sendStatus(200)
     }
 }
