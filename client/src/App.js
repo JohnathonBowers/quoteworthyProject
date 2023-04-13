@@ -5,6 +5,7 @@ import QuotationCreate from './components/QuotationCreate';
 import QuotationDetails from './components/QuotationDetails';
 import QuotationEdit from './components/QuotationEdit';
 import LoginForm from './components/LoginForm';
+import RegistrationForm from './components/RegistrationForm';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegistrationForm />} />
         <Route path="/quotations" element={<QuotationList />} />
         <Route path="/quotations/add" element={<QuotationCreate />} />
         <Route path="/quotations/edit/:id" element={< QuotationEdit />} />
