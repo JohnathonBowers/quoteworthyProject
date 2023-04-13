@@ -41,11 +41,11 @@ const LoginForm = () => {
                     ""
                 }
                 <form onSubmit={handleSubmit}>
-                    <div className="row mb-4">
+                    <div className="mb-4">
                         <label htmlFor="email" className="form-label mb-2">Email address:</label>
                         <input type="text" name="email" className="form-control mb-2" value={loginData.email} onChange={handleChange} />
                     </div>
-                    <div className="row mb-4">
+                    <div className="mb-4">
                         <label htmlFor="password" className="form-label mb-2">Password:</label>
                         <input type="password" name="password" className="form-control mb-2" value={loginData.password} onChange={handleChange} />
                     </div>
