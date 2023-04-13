@@ -23,7 +23,7 @@ const QuotationList = () => {
     }
 
     return (
-        <div className="container mt-4 col-sm-8">
+        <div className="container mt-4 col-lg-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
                 <Link to="/quotations/add">Add Quotation</Link>
