@@ -11,13 +11,9 @@ const QuotationList = (props) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(!isLoggedIn){
-            navigate("/login")
-        } else {
-            axios.get("http://localhost:8000/api/quotations")
-                .then(res => setQuotations(res.data))
-                .catch(err => console.log(err))
-        }
+        axios.get("http://localhost:8000/api/quotations", {withCredentials: true})
+            .then(res => setQuotations(res.data))
+            .catch(err => console.log(err))
     }, [])
     
     const removeFromDom = quotationId => {
@@ -25,7 +21,7 @@ const QuotationList = (props) => {
     }
 
     const deleteQuotation = quotationId => {
-        axios.delete("http://localhost:8000/api/quotations/" + quotationId)
+        axios.delete("http://localhost:8000/api/quotations/" + quotationId, {withCredentials: true})
             .then(res => {removeFromDom(quotationId)})
             .catch(err => console.log(err))
     }

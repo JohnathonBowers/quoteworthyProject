@@ -23,7 +23,7 @@ const QuotationCreate = () => {
     const navigate = useNavigate()
 
     const createQuotation = quotationParam => {
-        axios.post("http://localhost:8000/api/quotations", quotationParam)
+        axios.post("http://localhost:8000/api/quotations", quotationParam, {withCredentials: true})
             .then(res => {
                 navigate(`/quotations/${res.data._id}`)
             })

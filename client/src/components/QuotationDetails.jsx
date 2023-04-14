@@ -11,13 +11,13 @@ const QuotationDetails = () => {
     const navigate = useNavigate()
 
     const handleDeleteButton = quotationId => {
-        axios.delete("http://localhost:8000/api/quotations/" + quotationId)
+        axios.delete("http://localhost:8000/api/quotations/" + quotationId, {withCredentials: true})
             .then(navigate("/"))
             .catch(err => console.log(err))
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/quotations/" + id)
+        axios.get("http://localhost:8000/api/quotations/" + id, {withCredentials: true})
             .then(res => setQuotation(res.data))
             .catch(err => console.log(err))
     })

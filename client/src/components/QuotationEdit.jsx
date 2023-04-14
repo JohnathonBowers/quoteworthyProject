@@ -16,7 +16,7 @@ const QuotationEdit = () => {
     const navigate = useNavigate()
     
     useEffect(() => {
-        axios.get("http://localhost:8000/api/quotations/" + id)
+        axios.get("http://localhost:8000/api/quotations/" + id, {withCredentials: true})
             .then(res => {
                 setQuotation(res.data)
                 setLoaded(true)
@@ -25,7 +25,7 @@ const QuotationEdit = () => {
     }, [id])
 
     const updateQuotation = quotationParam => {
-        axios.put("http://localhost:8000/api/quotations/" + id, quotationParam)
+        axios.put("http://localhost:8000/api/quotations/" + id, quotationParam, {withCredentials: true})
             .then(res => {
                 console.log(res.data)
                 navigate("/quotations/" + id)
