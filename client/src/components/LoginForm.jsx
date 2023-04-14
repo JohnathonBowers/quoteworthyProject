@@ -3,13 +3,15 @@ import HomeHeader from './HomeHeader'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     
     const [loginData, setLoginData] = useState({
         email: "",
         password: ""
     })
     
+    const { loginUser } = props
+
     const [errors, setErrors] = useState()
 
     const navigate = useNavigate()
@@ -23,6 +25,7 @@ const LoginForm = () => {
         axios.post("http://localhost:8000/api/users/login", loginData, {withCredentials: true})
             .then(res => {
                 console.log(res)
+                loginUser(res.data.user._id)
                 navigate("/quotations")
             })
             .catch(err => {

@@ -2,16 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const QuotationList = () => {
+const QuotationList = (props) => {
     
     const [quotations, setQuotations] = useState([])
+
+    const { userId, isLoggedIn } = props
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/quotations")
-            .then(res => setQuotations(res.data))
-            .catch(err => console.log(err))
+        if(!isLoggedIn){
+            navigate("/login")
+        } else {
+            axios.get("http://localhost:8000/api/quotations")
+                .then(res => setQuotations(res.data))
+                .catch(err => console.log(err))
+        }
     }, [])
     
     const removeFromDom = quotationId => {

@@ -12,7 +12,7 @@ module.exports = {
                 res.status(400).json({message: "The email you entered is already associated with an account!"})
             } else {
                 const newUser = await User.create(req.body)
-                const userToken = jwt.sign({id: newUser._id}, secret)
+                const userToken = jwt.sign({id: newUser._id}, secret, {expiresIn: "1d"})
                 res.cookie("usertoken", userToken, {httpOnly: true}).json({message: "success", user: newUser})
             }
         } catch (err) {
