@@ -6,6 +6,7 @@ import QuotationDetails from './components/QuotationDetails';
 import QuotationEdit from './components/QuotationEdit';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/quotations/add" element={<QuotationCreate />} />
         <Route path="/quotations/edit/:id" element={< QuotationEdit />} />
         <Route path="/quotations/:id" element={< QuotationDetails />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
