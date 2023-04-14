@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const QuotationList = () => {
     
     const [quotations, setQuotations] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/quotations")
@@ -22,11 +24,23 @@ const QuotationList = () => {
             .catch(err => console.log(err))
     }
 
+    const handleLogoutButton = e => {
+        axios.post("http://localhost:8000/api/users/logout", {}, {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate("/login")
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="container mt-4 col-lg-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
-                <Link to="/quotations/add">Add Quotation</Link>
+                <div className="d-flex flex-row">
+                    <Link to="/quotations/add">Add Quotation</Link>
+                    <button className="btn btn-primary" onClick={handleLogoutButton}>Log out</button>
+                </div>
             </div>
             <div className="d-flex flex-row justify-content-center">
                 <h2 className="my-4">Your Collection</h2>
