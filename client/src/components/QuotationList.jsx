@@ -39,13 +39,11 @@ const QuotationList = (props) => {
         <div className="container mt-4 col-lg-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
-                <div className="d-flex flex-row">
-                    <Link to="/quotations/add">Add Quotation</Link>
-                    <button className="btn btn-primary" onClick={handleLogoutButton}>Log out</button>
-                </div>
+                <button className="btn btn-primary" onClick={handleLogoutButton}>Log out</button>
             </div>
-            <div className="d-flex flex-row justify-content-center">
-                <h2 className="my-4">Your Collection</h2>
+            <div className="d-flex flex-column align-items-center">
+                <h2 className="mt-4 mb-2">Your Collection</h2>
+                <Link className="mb-4" to="/quotations/add">Add Quotation</Link>
             </div>
             <div className="container col-sm-10">
                 {
