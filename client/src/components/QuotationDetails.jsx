@@ -31,7 +31,7 @@ const QuotationDetails = (props) => {
         axios.get("http://localhost:8000/api/quotations/" + id, {withCredentials: true})
             .then(res => setQuotation(res.data))
             .catch(err => console.log(err))
-    }, [])
+    }, [id])
 
     return (
         <div className="container mt-4 col-lg-8">
