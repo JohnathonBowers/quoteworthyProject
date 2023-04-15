@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const QuotationDetails = (props) => {
     
@@ -8,7 +9,9 @@ const QuotationDetails = (props) => {
 
     const {id} = useParams()
     
-    const { firstName, logoutUser } = props
+    const { logoutUser } = props
+
+    const userInfo = JSON.parse(Cookies.get("sessionInfo"))
 
     const navigate = useNavigate()
 
@@ -38,7 +41,7 @@ const QuotationDetails = (props) => {
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
                 <div className="dropdown">
-                    <button className="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome, {firstName}</button>
+                    <button className="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome, {userInfo.firstName}</button>
                     <ul className="dropdown-menu">
                         <li><Link to="#" className="dropdown-item" onClick={handleLogoutItem}>Log out</Link></li>
                     </ul>

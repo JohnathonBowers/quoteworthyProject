@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import HomeHeader from './HomeHeader'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
-const LoginForm = (props) => {
+const LoginForm = () => {
     
     const [loginData, setLoginData] = useState({
         email: "",
         password: ""
     })
-    
-    const { loginUser } = props
 
     const [errors, setErrors] = useState()
 
@@ -24,8 +23,7 @@ const LoginForm = (props) => {
         e.preventDefault()
         axios.post("http://localhost:8000/api/users/login", loginData, {withCredentials: true})
             .then(res => {
-                console.log(res.data.user)
-                loginUser(res.data.user)
+                Cookies.set("sessionInfo", `${JSON.stringify({userID: res.data.user._id, firstName: res.data.user.firstName})}`, {expires: 1})
                 navigate("/quotations")
             })
             .catch(err => {

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 import HomeHeader from './HomeHeader'
 
-const RegistrationForm = (props) => {
-    
-    const { loginUser } = props
+const RegistrationForm = () => {
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -30,7 +29,7 @@ const RegistrationForm = (props) => {
         setDuplicateEmailError("")
         axios.post("http://localhost:8000/api/users/register", userData, {withCredentials: true})
             .then(res => {
-                loginUser(res.data.user)
+                Cookies.set("sessionInfo", `${JSON.stringify({userID: res.data.user._id, firstName: res.data.user.firstName})}`, {expires: 1})
                 navigate("/quotations")
             })
             .catch(err => {
