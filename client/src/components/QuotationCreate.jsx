@@ -18,7 +18,7 @@ const QuotationCreate = (props) => {
         comments: ""
     }
 
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState()
     
     const { firstName, logoutUser } = props
 
@@ -30,12 +30,7 @@ const QuotationCreate = (props) => {
                 navigate(`/quotations/${res.data._id}`)
             })
             .catch(err => {
-                const errorResponse = err.response.data.errors
-                const errorArray = [];
-                for (const key of Object.keys(errorResponse)) {
-                    errorArray.push(errorResponse[key].message)
-                }
-                setErrors(errorArray)
+                setErrors(err.response.data.errors)
             })
     }
 
