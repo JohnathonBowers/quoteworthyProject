@@ -3,9 +3,11 @@ import axios from 'axios'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import QuotationForm from './QuotationForm'
 
-const QuotationEdit = () => {
+const QuotationEdit = (props) => {
     
     const {id} = useParams()
+
+    const { firstName, logoutUser } = props
 
     const [quotation, setQuotation] = useState({})
 
@@ -15,6 +17,15 @@ const QuotationEdit = () => {
 
     const navigate = useNavigate()
     
+    const handleLogoutItem = e => {
+        axios.post("http://localhost:8000/api/users/logout", {}, {withCredentials: true})
+            .then(res => {
+                logoutUser()
+                navigate("/login")
+            })
+            .catch(err => console.log(err))
+    }
+
     useEffect(() => {
         axios.get("http://localhost:8000/api/quotations/" + id, {withCredentials: true})
             .then(res => {
@@ -41,19 +52,23 @@ const QuotationEdit = () => {
     }
 
     return (
-        <div>
-            <div className="container mt-4 col-sm-8">
+        <div className="container mt-4 col-lg-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
-                <Link to="/quotations">View Collection</Link>
+                <div className="dropdown">
+                    <button className="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome, {firstName}</button>
+                    <ul className="dropdown-menu">
+                        <li><Link to="#" className="dropdown-item" onClick={handleLogoutItem}>Log out</Link></li>
+                    </ul>
+                </div>
             </div>
-            <div className="d-flex flex-row justify-content-center">
-                <h2 className="my-4">Edit Quotation</h2>
+            <div className="d-flex flex-column align-items-center">
+                <h2 className="mt-4 mb-2">Edit Quotation</h2>
+                <Link className="mb-2" to="/quotations">Back to collection</Link>
             </div>
             {
                 loaded && <QuotationForm initialQuotationData={quotation} onSubmitProp={updateQuotation} errors={errors} />
             }
-            </div>
         </div>
     )
 }

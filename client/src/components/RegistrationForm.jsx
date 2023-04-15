@@ -3,8 +3,10 @@ import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import HomeHeader from './HomeHeader'
 
-const RegistrationForm = () => {
+const RegistrationForm = (props) => {
     
+    const { loginUser } = props
+
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
@@ -28,7 +30,7 @@ const RegistrationForm = () => {
         setDuplicateEmailError("")
         axios.post("http://localhost:8000/api/users/register", userData, {withCredentials: true})
             .then(res => {
-                console.log(res)
+                loginUser(res.data.user)
                 navigate("/quotations")
             })
             .catch(err => {

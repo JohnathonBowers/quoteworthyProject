@@ -12,26 +12,42 @@ function App() {
   
   const [sessionInfo, setSessionInfo] = useState({
     userId: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     isLoggedIn: false
   })
   
-  const loginUser = userId => {
+  const loginUser = userData => {
     setSessionInfo({...sessionInfo, 
-      userId: userId,
+      userId: userData._id,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
       isLoggedIn: true
     })
+  }
+
+  const logoutUser = () => {
+    setSessionInfo({...sessionInfo,
+      userId: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      isLoggedIn: false
+  })
   }
 
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginForm loginUser={loginUser} />} />
+        <Route path="/login" element={<LoginForm loginUser={loginUser} firstName={sessionInfo.firstName}/>} />
         <Route path="/register" element={<RegistrationForm loginUser={loginUser} />} />
-        <Route path="/quotations" element={<QuotationList userId={sessionInfo.userId} isLoggedIn={sessionInfo.isLoggedIn}/>} />
-        <Route path="/quotations/add" element={<QuotationCreate />} />
-        <Route path="/quotations/edit/:id" element={< QuotationEdit />} />
-        <Route path="/quotations/:id" element={< QuotationDetails />} />
+        <Route path="/quotations" element={<QuotationList firstName={sessionInfo.firstName} logoutUser={logoutUser} />} />
+        <Route path="/quotations/add" element={<QuotationCreate firstName={sessionInfo.firstName} logoutUser={logoutUser} />} />
+        <Route path="/quotations/edit/:id" element={< QuotationEdit firstName={sessionInfo.firstName} logoutUser={logoutUser} />} />
+        <Route path="/quotations/:id" element={< QuotationDetails firstName={sessionInfo.firstName} logoutUser={logoutUser} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

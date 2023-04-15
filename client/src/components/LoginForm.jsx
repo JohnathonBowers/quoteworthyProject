@@ -24,8 +24,8 @@ const LoginForm = (props) => {
         e.preventDefault()
         axios.post("http://localhost:8000/api/users/login", loginData, {withCredentials: true})
             .then(res => {
-                console.log(res)
-                loginUser(res.data.user._id)
+                console.log(res.data.user)
+                loginUser(res.data.user)
                 navigate("/quotations")
             })
             .catch(err => {

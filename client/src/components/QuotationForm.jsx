@@ -24,13 +24,13 @@ const QuotationForm = (props) => {
     }
 
     return (
-        <div className="container col-sm-10 mt-4">
+        <div className="container col-lg-12">
             <div className="mb-4">
             {
                 errors.map((error, index) => <p key={index} className="text-danger">{error}</p>)
             }
             </div>
-            <p className="text-primary my-4">* Indicates a required field</p>
+            <p className="text-danger mb-4">* Indicates a required field</p>
             <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                     <div className="col-sm-6">
@@ -70,11 +70,11 @@ const QuotationForm = (props) => {
                         <input type="number" name="yearPublished" className="form-control mb-4" value={quotation.yearPublished} onChange={handleChange} />
                     </div>
                 </div>
-                <div className="row g-3">
+                <div className="g-3">
                     <label htmlFor="quotation" className="form-label mb-2">Quotation:*</label>
                     <textarea name="quotation" cols="30" rows="4" className="form-control mb-4" value={quotation.quotation} onChange={handleChange}></textarea>
                 </div>
-                <div className="row g-3">
+                <div className="g-3">
                     <label htmlFor="comments" className="form-label mb-2">Comments:</label>
                     <textarea name="comments" cols="30" rows="4" className="form-control mb-4" value={quotation.comments} onChange={handleChange}></textarea>
                 </div>

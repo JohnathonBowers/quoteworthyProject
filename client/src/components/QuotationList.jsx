@@ -6,7 +6,7 @@ const QuotationList = (props) => {
     
     const [quotations, setQuotations] = useState([])
 
-    const { userId, isLoggedIn } = props
+    const { firstName, logoutUser } = props
 
     const navigate = useNavigate()
 
@@ -26,10 +26,10 @@ const QuotationList = (props) => {
             .catch(err => console.log(err))
     }
 
-    const handleLogoutButton = e => {
+    const handleLogoutItem = e => {
         axios.post("http://localhost:8000/api/users/logout", {}, {withCredentials: true})
             .then(res => {
-                console.log(res)
+                logoutUser()
                 navigate("/login")
             })
             .catch(err => console.log(err))
@@ -39,7 +39,12 @@ const QuotationList = (props) => {
         <div className="container mt-4 col-lg-8">
             <div className="d-flex flex-row justify-content-between align-items-center mb-4">
                 <h2><strong>Quoteworthy</strong></h2>
-                <button className="btn btn-primary" onClick={handleLogoutButton}>Log out</button>
+                <div className="dropdown">
+                    <button className="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome, {firstName}</button>
+                    <ul className="dropdown-menu">
+                        <li><Link to="#" className="dropdown-item" onClick={handleLogoutItem}>Log out</Link></li>
+                    </ul>
+                </div>
             </div>
             <div className="d-flex flex-column align-items-center">
                 <h2 className="mt-4 mb-2">Your Collection</h2>
