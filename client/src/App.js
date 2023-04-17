@@ -8,6 +8,7 @@ import QuotationEdit from './components/QuotationEdit';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import PageNotFound from './components/PageNotFound';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
 
@@ -21,10 +22,12 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/quotations" element={<QuotationList logoutUser={logoutUser} />} />
-        <Route path="/quotations/add" element={<QuotationCreate logoutUser={logoutUser} />} />
-        <Route path="/quotations/edit/:id" element={< QuotationEdit logoutUser={logoutUser} />} />
-        <Route path="/quotations/:id" element={< QuotationDetails logoutUser={logoutUser} />} />
+        <Route element={<ProtectedRoutes />} >
+          <Route path="/quotations" element={<QuotationList logoutUser={logoutUser} />} />
+          <Route path="/quotations/add" element={<QuotationCreate logoutUser={logoutUser} />} />
+          <Route path="/quotations/edit/:id" element={< QuotationEdit logoutUser={logoutUser} />} />
+          <Route path="/quotations/:id" element={< QuotationDetails logoutUser={logoutUser} />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
