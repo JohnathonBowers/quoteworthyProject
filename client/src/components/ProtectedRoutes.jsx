@@ -9,7 +9,7 @@ const ProtectedRoutes = () => {
     let isLoggedIn = Cookies.get("sessionInfo")
     
     return (
-        isLoggedIn ? < Outlet /> : < Navigate to="/login" />
+        isLoggedIn ? <Outlet /> : <Navigate to="/login" />
     )
 }
 

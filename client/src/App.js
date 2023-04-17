@@ -9,6 +9,7 @@ import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import PageNotFound from './components/PageNotFound';
 import ProtectedRoutes from './components/ProtectedRoutes';
+import LoggedOutRoutes from './components/LoggedOutRoutes';
 
 function App() {
 
@@ -19,9 +20,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegistrationForm />} />
+        <Route element={<LoggedOutRoutes />} >
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegistrationForm />} />
+        </Route>
         <Route element={<ProtectedRoutes />} >
           <Route path="/quotations" element={<QuotationList logoutUser={logoutUser} />} />
           <Route path="/quotations/add" element={<QuotationCreate logoutUser={logoutUser} />} />
