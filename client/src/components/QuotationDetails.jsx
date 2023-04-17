@@ -17,7 +17,7 @@ const QuotationDetails = (props) => {
 
     const handleDeleteButton = quotationId => {
         axios.delete("http://localhost:8000/api/quotations/" + quotationId, {withCredentials: true})
-            .then(navigate("/"))
+            .then(navigate("/quotations"))
             .catch(err => console.log(err))
     }
 
@@ -51,16 +51,22 @@ const QuotationDetails = (props) => {
                 <h2 className="mt-4 mb-2">Quotation Details</h2>
                 <Link className="mb-2" to="/quotations">Back to collection</Link>
             </div>
-            <div className="container col-lg-10">
-                <h5 className="my-4 shadow-sm p-4 mb-5 bg-body-tertiary rounded">{quotation.quotation}</h5>
+            <div className="container col-lg-10 mb-5">
+                <h5 className="mt-4 shadow-sm p-4 mb-5 bg-body-tertiary rounded">{quotation.quotation}</h5>
                 <p className="mt-4 mb-2"><strong>Citation Information:</strong></p>
                 {
                     quotation.endPage === quotation.startPage ?
                     <p><span>&#8212;</span> {quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}</p> :
                     <p><span>&#8212;</span> {quotation.authorFirstName} {quotation.authorLastName}, <em>{quotation.bookTitle}</em> ({quotation.publisherLocation}: {quotation.publisherName}, {quotation.yearPublished}), {quotation.startPage}-{quotation.endPage}</p>
                 }
-                <p className="mt-4 mb-2"><strong>Your Comments:</strong></p>
-                <p className="mb-4">{quotation.comments}</p>
+                {
+                    quotation.comments ?
+                    <div>
+                        <p className="mt-5 mb-2"><strong>Your Comments:</strong></p>
+                        <p className="mb-5">{quotation.comments}</p>
+                    </div> :
+                    ""
+                }
             </div>
             <div className="mt-4 d-flex flex-row justify-content-center">
                 <button className="me-4 btn btn-warning" onClick={e => navigate("/quotations/edit/" + id)}>Edit Quotation</button>

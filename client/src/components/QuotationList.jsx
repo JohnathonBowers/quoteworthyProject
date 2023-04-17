@@ -68,7 +68,7 @@ const QuotationList = (props) => {
                                     }
                                 </div>
                                 <div className="dropdown">
-                                    <button className="my-2 btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
+                                    <button className="mb-2 btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
                                     <ul className="dropdown-menu">
                                         <li><Link to={`/quotations/${quotation._id}`} className="dropdown-item">Details</Link></li>
                                         <li><Link to={`/quotations/edit/${quotation._id}`} className="dropdown-item">Edit</Link></li>

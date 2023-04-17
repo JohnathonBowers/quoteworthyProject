@@ -124,8 +124,8 @@ const QuotationForm = (props) => {
                     }
                 </div>
                 <div className="d-flex flex-row justify-content-center">
-                    <button className="me-4 btn btn-danger" onClick={handleCancel}>Cancel</button>
-                    <input type="submit" className="btn btn-primary" value="Submit" />
+                    <input type="submit" className="btn btn-primary me-4" value="Submit" />
+                    <button className="btn btn-danger" onClick={handleCancel}>Cancel</button>
                 </div>
             </form>
         </div>

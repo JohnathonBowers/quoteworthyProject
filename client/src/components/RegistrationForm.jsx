@@ -81,6 +81,7 @@ const RegistrationForm = () => {
                     <div className="mb-4">
                         <label htmlFor="password" className="form-label mb-2">Password:</label>
                         <input type="password" name="password" className="form-control mb-2" value={userData.password} onChange={handleChange} />
+                        <div className="form-text mb-2">Password must be 8-20 characters long and contain one uppercase letter, one number, and one symbol.</div>
                         {
                             errors && errors.password ?
                             <p className="text-danger mb-2">{errors.password.message}</p> :

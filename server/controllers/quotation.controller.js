@@ -9,7 +9,7 @@ module.exports = {
     },
     // Find all quotations
     findAllQuotations: (req, res) => {
-        Quotation.find({}).sort({authorLastName: 'asc'})
+        Quotation.find({}).sort({authorLastName: 'asc', startPage: 'asc'})
         .then(allQuotations => res.json(allQuotations))
         .catch(err => res.status(400).json(err))
     },
