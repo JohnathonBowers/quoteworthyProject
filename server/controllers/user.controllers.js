@@ -44,17 +44,5 @@ module.exports = {
     logoutUser: (req, res) => {
         res.clearCookie("usertoken")
         res.sendStatus(200)
-    },
-    // Find all users
-    findAllUsers: (req, res) => {
-        User.find({})
-        .then(allUsers => res.json(allUsers))
-        .catch(err => res.status(400).json(err))
-    },
-    // Delete a user
-    deleteOneUser: (req, res) => {
-        User.findByIdAndDelete(req.params.id)
-            .then(deleteConfirmation => res.json(deleteConfirmation))
-            .catch(err => res.status(400).json(err))
     }
 }
