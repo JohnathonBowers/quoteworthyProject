@@ -1,69 +1,80 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import Cookies from 'js-cookie'
-import QuotationForm from './QuotationForm'
+import React, { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import QuotationForm from './QuotationForm';
+import Navbar from './Navbar';
 
-const QuotationCreate = (props) => {
-    
+const QuotationCreate = props => {
+    const { userId } = useParams();
+
     const initialQuotationData = {
-        authorFirstName: "",
-        authorLastName: "",
-        bookTitle: "",
-        publisherName: "",
-        publisherLocation: "",
-        yearPublished: "",
-        startPage: "",
-        endPage: "",
-        quotation: "",
-        comments: ""
-    }
+        authorFirstName: '',
+        authorLastName: '',
+        bookTitle: '',
+        publisherName: '',
+        publisherLocation: '',
+        yearPublished: '',
+        startPage: '',
+        endPage: '',
+        quotation: '',
+        comments: '',
+        userId: '',
+    };
 
-    const [errors, setErrors] = useState()
-    
-    const { logoutUser } = props
+    const [errors, setErrors] = useState();
 
-    const userInfo = JSON.parse(Cookies.get("sessionInfo"))
+    const { logoutUser } = props;
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const createQuotation = quotationParam => {
-        axios.post("http://localhost:8000/api/quotations", quotationParam, {withCredentials: true})
+        axios
+            .post(
+                'http://localhost:8000/api/quotations/user/' + userId,
+                quotationParam,
+                {
+                    withCredentials: true,
+                }
+            )
             .then(res => {
-                navigate(`/quotations/${res.data._id}`)
+                navigate(`/quotations/details/${res.data._id}/user/${userId}`);
             })
             .catch(err => {
-                setErrors(err.response.data.errors)
-            })
-    }
+                setErrors(err.response.data.errors);
+            });
+    };
 
     const handleLogoutItem = e => {
-        axios.post("http://localhost:8000/api/users/logout", {}, {withCredentials: true})
+        axios
+            .post(
+                'http://localhost:8000/api/users/logout',
+                {},
+                { withCredentials: true }
+            )
             .then(res => {
-                logoutUser()
-                navigate("/login")
+                logoutUser();
+                navigate('/login');
             })
-            .catch(err => console.log(err))
-    }
+            .catch(err => console.log(err));
+    };
 
     return (
         <div className="container mt-4 col-lg-8">
-            <div className="d-flex flex-row justify-content-between align-items-center mb-4">
-                <h2><strong>Quoteworthy</strong></h2>
-                <div className="dropdown">
-                    <button className="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome, {userInfo.firstName}</button>
-                    <ul className="dropdown-menu">
-                        <li><Link to="#" className="dropdown-item" onClick={handleLogoutItem}>Log out</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Navbar handleLogoutItem={handleLogoutItem} userId={userId} />
             <div className="d-flex flex-column align-items-center">
                 <h2 className="mt-4 mb-2">Create a Quotation</h2>
-                <Link className="mb-2" to="/quotations">Back to collection</Link>
+                <Link className="mb-2" to={`/quotations/user/${userId}`}>
+                    Back to collection
+                </Link>
             </div>
-            <QuotationForm initialQuotationData={initialQuotationData} onSubmitProp={createQuotation} errors={errors} />
+            <QuotationForm
+                initialQuotationData={initialQuotationData}
+                onSubmitProp={createQuotation}
+                errors={errors}
+                userId={userId}
+            />
         </div>
-    )
-}
+    );
+};
 
-export default QuotationCreate
+export default QuotationCreate;

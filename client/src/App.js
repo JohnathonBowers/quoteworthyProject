@@ -26,10 +26,10 @@ function App() {
           <Route path="/register" element={<RegistrationForm />} />
         </Route>
         <Route element={<ProtectedRoutes />} >
-          <Route path="/quotations" element={<QuotationList logoutUser={logoutUser} />} />
-          <Route path="/quotations/add" element={<QuotationCreate logoutUser={logoutUser} />} />
-          <Route path="/quotations/edit/:id" element={< QuotationEdit logoutUser={logoutUser} />} />
-          <Route path="/quotations/:id" element={< QuotationDetails logoutUser={logoutUser} />} />
+          <Route path="/quotations/user/:userId" element={<QuotationList logoutUser={logoutUser} />} />
+          <Route path="/quotations/add/user/:userId" element={<QuotationCreate logoutUser={logoutUser} />} />
+          <Route path="/quotations/edit/:quotationId/user/:userId" element={< QuotationEdit logoutUser={logoutUser} />} />
+          <Route path="/quotations/details/:quotationId/user/:userId" element={< QuotationDetails logoutUser={logoutUser} />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
