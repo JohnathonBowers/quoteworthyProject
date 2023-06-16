@@ -4,7 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import HomeHeader from './HomeHeader';
 
-const RegistrationForm = () => {
+const RegistrationForm = props => {
     const [userData, setUserData] = useState({
         firstName: '',
         lastName: '',
@@ -12,6 +12,8 @@ const RegistrationForm = () => {
         password: '',
         confirmPassword: '',
     });
+
+    const { setUserFirstName } = props;
 
     const [errors, setErrors] = useState();
 
@@ -36,6 +38,7 @@ const RegistrationForm = () => {
                     `${JSON.stringify({ isLoggedIn: true })}`,
                     { expires: 1 }
                 );
+                setUserFirstName(res.data.user.firstName);
                 navigate(`/quotations/user/${res.data.user._id}`);
             })
             .catch(err => {

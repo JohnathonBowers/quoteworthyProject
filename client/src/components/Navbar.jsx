@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Navbar = props => {
-    const { userId, handleLogoutItem } = props;
+    const { userFirstName, handleLogoutItem, setUserFirstName } = props;
 
-    const [userFirstName, setUserFirstName] = useState('');
+    const { userId } = useParams();
 
     useEffect(() => {
-        axios
-            .get('http://localhost:8000/api/user/' + userId, {
-                withCredentials: true,
-            })
-            .then(res => setUserFirstName(res.data.firstName))
-            .catch(err => console.log(err));
+        if (!userFirstName) {
+            axios
+                .get('http://localhost:8000/api/user/' + userId, {
+                    withCredentials: true,
+                })
+                .then(res => setUserFirstName(res.data.firstName))
+                .catch(err => console.log(err));
+        }
     });
 
     return (

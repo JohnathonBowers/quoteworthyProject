@@ -4,11 +4,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const LoginForm = () => {
+const LoginForm = props => {
     const [loginData, setLoginData] = useState({
         email: '',
         password: '',
     });
+
+    const { setUserFirstName } = props;
 
     const [errors, setErrors] = useState();
 
@@ -30,6 +32,7 @@ const LoginForm = () => {
                     `${JSON.stringify({ isLoggedIn: true })}`,
                     { expires: 1 }
                 );
+                setUserFirstName(res.data.user.firstName);
                 navigate(`/quotations/user/${res.data.user._id}`);
             })
             .catch(err => {
