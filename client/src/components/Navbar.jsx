@@ -14,7 +14,7 @@ const Navbar = props => {
             })
             .then(res => setUserFirstName(res.data.firstName))
             .catch(err => console.log(err));
-    }, [userId]);
+    });
 
     return (
         <div className="d-flex flex-row justify-content-between align-items-center mb-4">

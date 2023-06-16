@@ -18,7 +18,7 @@ const QuotationCreate = props => {
         endPage: '',
         quotation: '',
         comments: '',
-        userId: '',
+        userId: userId,
     };
 
     const [errors, setErrors] = useState();
