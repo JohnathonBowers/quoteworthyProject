@@ -14,8 +14,6 @@ const QuotationForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('Quotation submitted');
-        console.log(quotation);
         onSubmitProp(quotation);
     };
 

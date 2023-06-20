@@ -16,7 +16,7 @@ const QuotationList = props => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/api/quotations/user/' + userId, {
+            .get('/api/quotations/user/' + userId, {
                 withCredentials: true,
             })
             .then(res => {
@@ -34,15 +34,9 @@ const QuotationList = props => {
 
     const deleteQuotation = quotationId => {
         axios
-            .delete(
-                'http://localhost:8000/api/quotations/' +
-                    quotationId +
-                    '/user/' +
-                    userId,
-                {
-                    withCredentials: true,
-                }
-            )
+            .delete('/api/quotations/' + quotationId + '/user/' + userId, {
+                withCredentials: true,
+            })
             .then(res => {
                 removeFromDom(quotationId);
             })
@@ -51,11 +45,7 @@ const QuotationList = props => {
 
     const handleLogoutItem = e => {
         axios
-            .post(
-                'http://localhost:8000/api/users/logout',
-                {},
-                { withCredentials: true }
-            )
+            .post('/api/users/logout', {}, { withCredentials: true })
             .then(res => {
                 logoutUser();
                 navigate('/login');

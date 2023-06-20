@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/quotationDb', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+const DB = process.env.DATABASE.replace(
+    '<PASSWORD>',
+    process.env.DATABASE_PASSWORD
+);
+
+mongoose
+    .connect(DB, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then(() => console.log('Established a connection to the database'))
-    .catch(err => console.log('Something went wrong when connecting to the database', err));
+    .catch(err =>
+        console.log('Something went wrong when connecting to the database', err)
+    );

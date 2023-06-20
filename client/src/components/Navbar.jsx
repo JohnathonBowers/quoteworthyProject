@@ -10,7 +10,7 @@ const Navbar = props => {
     useEffect(() => {
         if (!userFirstName) {
             axios
-                .get('http://localhost:8000/api/user/' + userId, {
+                .get('/api/user/' + userId, {
                     withCredentials: true,
                 })
                 .then(res => setUserFirstName(res.data.firstName))

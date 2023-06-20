@@ -23,7 +23,7 @@ const LoginForm = props => {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-            .post('http://localhost:8000/api/users/login', loginData, {
+            .post('/api/users/login', loginData, {
                 withCredentials: true,
             })
             .then(res => {

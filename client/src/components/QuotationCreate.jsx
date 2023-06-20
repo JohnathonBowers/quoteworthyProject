@@ -29,13 +29,9 @@ const QuotationCreate = props => {
 
     const createQuotation = quotationParam => {
         axios
-            .post(
-                'http://localhost:8000/api/quotations/user/' + userId,
-                quotationParam,
-                {
-                    withCredentials: true,
-                }
-            )
+            .post('/api/quotations/user/' + userId, quotationParam, {
+                withCredentials: true,
+            })
             .then(res => {
                 navigate(`/quotations/details/${res.data._id}/user/${userId}`);
             })
@@ -46,11 +42,7 @@ const QuotationCreate = props => {
 
     const handleLogoutItem = e => {
         axios
-            .post(
-                'http://localhost:8000/api/users/logout',
-                {},
-                { withCredentials: true }
-            )
+            .post('/api/users/logout', {}, { withCredentials: true })
             .then(res => {
                 logoutUser();
                 navigate('/login');

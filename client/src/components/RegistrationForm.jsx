@@ -29,7 +29,7 @@ const RegistrationForm = props => {
         e.preventDefault();
         setDuplicateEmailError('');
         axios
-            .post('http://localhost:8000/api/users/register', userData, {
+            .post('/api/users/register', userData, {
                 withCredentials: true,
             })
             .then(res => {

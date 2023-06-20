@@ -19,11 +19,7 @@ const QuotationEdit = props => {
 
     const handleLogoutItem = e => {
         axios
-            .post(
-                'http://localhost:8000/api/users/logout',
-                {},
-                { withCredentials: true }
-            )
+            .post('/api/users/logout', {}, { withCredentials: true })
             .then(res => {
                 logoutUser();
                 navigate('/login');
@@ -33,15 +29,9 @@ const QuotationEdit = props => {
 
     useEffect(() => {
         axios
-            .get(
-                'http://localhost:8000/api/quotations/' +
-                    quotationId +
-                    '/user/' +
-                    userId,
-                {
-                    withCredentials: true,
-                }
-            )
+            .get('/api/quotations/' + quotationId + '/user/' + userId, {
+                withCredentials: true,
+            })
             .then(res => {
                 setQuotation(res.data);
                 setLoaded(true);
@@ -52,17 +42,13 @@ const QuotationEdit = props => {
     const updateQuotation = quotationParam => {
         axios
             .put(
-                'http://localhost:8000/api/quotations/' +
-                    quotationId +
-                    '/user/' +
-                    userId,
+                '/api/quotations/' + quotationId + '/user/' + userId,
                 quotationParam,
                 {
                     withCredentials: true,
                 }
             )
-            .then(res => {
-                console.log(res.data);
+            .then(() => {
                 navigate(
                     '/quotations/details/' + quotationId + '/user/' + userId
                 );
