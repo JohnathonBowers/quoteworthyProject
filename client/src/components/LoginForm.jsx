@@ -30,7 +30,7 @@ const LoginForm = props => {
                 Cookies.set(
                     'sessionInfo',
                     `${JSON.stringify({ isLoggedIn: true })}`,
-                    { expires: 1 }
+                    { expires: 0.25 }
                 );
                 setUserFirstName(res.data.user.firstName);
                 navigate(`/quotations/user/${res.data.user._id}`);
