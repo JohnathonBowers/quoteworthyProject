@@ -6,6 +6,8 @@ The Quoteworthy app allows users to add and manage important quotations they enc
 
 **LIVE LINK:** https://quoteworthy-9aea783adab7.herokuapp.com/
 
+![](/homePageScreenshot.png)
+
 ## Features
 
 -   Login and registration allows users to maintain their own collection of quotations.
