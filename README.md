@@ -66,3 +66,7 @@ The Quoteworthy app allows users to add and manage important quotations they enc
 -   [react](https://www.npmjs.com/package/react)
 -   [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 -   [validator](https://www.npmjs.com/package/validator)
+
+## Attributions
+
+-   Favicon generated using [favicon.io](https://favicon.io/favicon-generator/)
