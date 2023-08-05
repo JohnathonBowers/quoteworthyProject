@@ -4,7 +4,7 @@
 
 The Quoteworthy app allows users to add and manage important quotations they encounter while reading books. Reading is one of my favorite things to do, and one of my favorite things about reading is gleaning wisdom from other people's perspectives. I designed this app to be a repository of wisdom. 😊
 
-**LIVE LINK:** https://quoteworthy-9aea783adab7.herokuapp.com/
+**LIVE LINK TO DEPLOYED APP AVAILABLE UPON REQUEST**
 
 ![](/homePageScreenshot.png)
 
